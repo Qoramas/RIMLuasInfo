@@ -32,13 +32,26 @@ class TestInterceptor(val context: Context) : Interceptor {
             .build()
     }
 
+    private fun getFailure(chain: Interceptor.Chain, str: String, mediaType: String) : Response {
+        return Response.Builder()
+            .code(500)
+            .message(str)
+            .request(chain.request())
+            .protocol(Protocol.HTTP_1_0)
+            .body(ResponseBody.create(mediaType.toMediaTypeOrNull(), str.toByteArray()))
+            .addHeader("content-type", mediaType)
+            .build()
+    }
+
     override fun intercept(chain: Interceptor.Chain): Response {
         var response : Response? = null
         if (BuildConfig.DEBUG) {
             var url = chain.request().url.toUri().path
             if (url.contains("xml")) {
-                response = getSuccess(chain, getStringFromAsset("luas_full_due.xml"), "application/xml")
+//                response = getSuccess(chain, getStringFromAsset("luas_bad_data.xml"), "application/xml")
+//                response = getSuccess(chain, getStringFromAsset("luas_full_due.xml"), "application/xml")
 //                response = getSuccess(chain, getStringFromAsset("luas_no_service.xml"), "application/xml")
+//                response = getFailure(chain, getStringFromAsset("luas_no_service.xml"), "application/xml")
             }
         }
 

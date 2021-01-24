@@ -5,9 +5,10 @@
 
     <data>
         <import type="com.shaycock.rimluasinfo.data.model.StopInfo"/>
+        <import type="com.shaycock.rimluasinfo.api.DataWrapper"/>
         <import type="android.view.View"/>
 
-        <variable name="stopInfo" type="com.shaycock.rimluasinfo.data.model.StopInfo" />
+        <variable name="stopInfo" type="DataWrapper&lt;StopInfo&gt;" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +31,7 @@
         <TextView
             android:id="@+id/text_title_stop"
             tools:text="Stillorgan"
-            android:text="@{stopInfo.stop}"
+            android:text="@{stopInfo.data.stop}"
             android:textSize="26sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,7 +41,7 @@
         <TextView
             android:id="@+id/text_title_direction"
             tools:text="Inbound"
-            android:text="@{stopInfo.selectedDirection}"
+            android:text="@{stopInfo.data.selectedDirection}"
             android:layout_marginStart="16dp"
             android:textSize="24sp"
             android:layout_width="wrap_content"
@@ -51,7 +52,7 @@
         <TextView
             android:id="@+id/text_msg_status"
             tools:text="Green Line services operating normally"
-            android:text="@{stopInfo.message}"
+            android:text="@{stopInfo.data.message}"
             android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,7 +62,7 @@
         <TextView
             android:id="@+id/text_msg_time"
             tools:text="Last updated : 23:45 23/01/2021"
-            android:text= "@{String.format(@string/msg_last_update, stopInfo.createFormatted)}"
+            android:text= "@{String.format(@string/msg_last_update, stopInfo.data.createFormatted)}"
             android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,7 +99,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:visibility="gone"
-            android:visibility="@{stopInfo != null &amp;&amp; !stopInfo.stop.empty ? View.GONE : View.VISIBLE}">
+            android:visibility="@{stopInfo.data != null &amp;&amp; !stopInfo.data.stop.empty ? View.GONE : View.VISIBLE}">
 
             <ProgressBar
                 android:id="@+id/progress_loader_main"

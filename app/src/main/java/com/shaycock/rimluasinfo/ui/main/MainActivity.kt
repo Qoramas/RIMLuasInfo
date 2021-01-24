@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shaycock.rimluasinfo.R
-
 import com.shaycock.rimluasinfo.databinding.ActivityMainBinding
 
 class MainActivity: AppCompatActivity() {
@@ -30,8 +30,23 @@ class MainActivity: AppCompatActivity() {
         }
 
         viewModel.stopInfoMedLD.observe(this) { stopInfo ->
+            //If the rest response from luas has an error, notify the user then close the app
+            if (stopInfo.error != null) {
+                val alertDialog: AlertDialog = AlertDialog.Builder(this@MainActivity).create()
+                alertDialog.setTitle(getString(R.string.error_title_oops))
+                alertDialog.setMessage(getString(R.string.error_msg_communicate_to_luas))
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.common_ok)) { _, _ -> finish() }
+                alertDialog.setOnDismissListener { finish() }
+                alertDialog.show()
+            }
+
+            //bind the data to the activity
             binding.stopInfo = stopInfo
-            tramRecyclerViewAdapter.submitList(stopInfo.getInboundTrams())
+
+            //Load the trams to the recycler adapter
+            stopInfo.data?.let {
+                tramRecyclerViewAdapter.submitList(stopInfo.data!!.getInboundTrams())
+            }
         }
     }
 
