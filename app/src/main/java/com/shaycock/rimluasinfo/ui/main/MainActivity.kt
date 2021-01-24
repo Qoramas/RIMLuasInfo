@@ -45,7 +45,7 @@ class MainActivity: AppCompatActivity() {
 
             //Load the trams to the recycler adapter
             stopInfo.data?.let {
-                tramRecyclerViewAdapter.submitList(stopInfo.data!!.getInboundTrams())
+                tramRecyclerViewAdapter.submitList(stopInfo.data!!.getTrams())
             }
         }
     }

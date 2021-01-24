@@ -19,21 +19,21 @@ class LuasRepository (application: Application) {
 
     suspend fun getLuasForecast() : LiveData<DataWrapper<StopInfo>> {
         val now = DateTime()
-        var selectedStop : String
-        selectedStop = if (now.hourOfDay().get() >= 12) {
-            StopInfo.STOP_STI
-        } else {
+        var selectedStop : String =
+//        selectedStop = if (now.hourOfDay().get() >= 12) {
+//            StopInfo.STOP_STI
+//        } else {
             StopInfo.STOP_MAR
-        }
+//        }
 
         try {
             val stopInfo = restService.getLuasForecast(selectedStop)
 
-            stopInfo.selectedDirection = if (now.hourOfDay().get() >= 12) {
-                Direction.DIRECTION_INBOUND
-            } else {
+//            stopInfo.selectedDirection = if (now.hourOfDay().get() >= 12) {
+//                Direction.DIRECTION_INBOUND
+//            } else {
                 Direction.DIRECTION_OUTBOUND
-            }
+//            }
 
             stopInfoLiveData.postValue(DataWrapper(stopInfo))
         } catch (exception: Exception) {

@@ -31,10 +31,6 @@ class StopInfo {
     var createFormatted: String = ""
         get() = DateTimeUtil.isoToTimeDateFullFormat(created)
 
-    fun getOutboundTrams() : List<Tram> = getTrams(Direction.DIRECTION_OUTBOUND)
-
-    fun getInboundTrams() : List<Tram> = getTrams(Direction.DIRECTION_INBOUND)
-
     private fun getTrams(dirName: String) : List<Tram> {
         if (direction != null) {
             for (d in direction!!) {
@@ -45,4 +41,6 @@ class StopInfo {
         }
         return listOf()
     }
+
+    fun getTrams() = getTrams(selectedDirection)
 }

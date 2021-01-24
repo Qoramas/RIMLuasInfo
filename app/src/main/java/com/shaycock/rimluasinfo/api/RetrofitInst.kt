@@ -20,7 +20,7 @@ object RetrofitInst {
         val client = OkHttpClient.Builder()
             .addInterceptor(interceptor)
             //Uncomment the following line to implement the testInterceptor
-            .addInterceptor(TestInterceptor(context))
+//            .addInterceptor(TestInterceptor(context))
             .build()
 
         Retrofit.Builder().baseUrl(BASE_URL)
