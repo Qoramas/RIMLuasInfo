@@ -1,0 +1,13 @@
+<stopInfo created="2021-01-24T17:18:14" stop="Stillorgan" stopAbv="STI">
+    <message>Green Line services operating normally</message>
+    <direction name="Inbound">
+        <tram dueMins="DUE" destination="Broombridge" />
+        <tram dueMins="6" destination="Broombridge" />
+        <tram dueMins="18" destination="Broombridge" />
+    </direction>
+    <direction name="Outbound">
+        <tram dueMins="DUE" destination="Bride's Glen" />
+        <tram dueMins="5" destination="Bride's Glen" />
+        <tram dueMins="17" destination="Bride's Glen" />
+    </direction>
+</stopInfo>

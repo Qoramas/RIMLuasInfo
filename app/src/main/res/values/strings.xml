@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">RIM Luas Info</string>
+    <string name="title_launcher_title">Luas Forecast\nMarlborough ⬌ Stillorgan</string>
+    <string name="action_refresh">Refresh Luas Trips</string>
+    <string name="msg_last_update">Last updated at : %s</string>
+
+    <string name="msg_due_any_second">Due: Any second now</string>
+    <plurals name="msg_due_times">
+        <item quantity="one">Due: %d minute</item>
+        <item quantity="other">Due: %d minutes</item>
+    </plurals>
+</resources>

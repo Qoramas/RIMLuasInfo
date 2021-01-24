@@ -1,0 +1,9 @@
+<stopInfo created="2021-01-24T01:02:30" stop="Stillorgan" stopAbv="STI">
+    <message>Green Line services operating normally</message>
+    <direction name="Inbound">
+        <tram destination="No trams forecast" dueMins="" />
+    </direction>
+    <direction name="Outbound">
+        <tram destination="No trams forecast" dueMins="" />
+    </direction>
+</stopInfo>
